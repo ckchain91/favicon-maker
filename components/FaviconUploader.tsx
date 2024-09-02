@@ -88,48 +88,64 @@ const FaviconUploader: React.FC = () => {
     }
   };
 
+  const handleDelete = () => {
+    setFavicon(null);
+    const link = document.querySelector("link[rel*='icon']") as HTMLLinkElement | null;
+    if (link) {
+      link.href = '/favicon.ico';
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold mb-4">Favicon 변경기</h1>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFileUpload}
-        className="mb-4"
-      />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-red-500 text-white">
+      <h1 className="text-4xl font-bold mb-4">Favicon 변경기</h1>
+      {!favicon && (
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileUpload}
+          className="mb-4 p-2 border border-gray-300 rounded bg-white text-black transition duration-300 ease-in-out transform hover:scale-105"
+        />
+      )}
       {favicon && (
         <>
           <img src={favicon} alt="New Favicon" className="w-16 h-16 border border-gray-300" />
           <div className="mt-4 flex flex-col items-center">
             <button
               onClick={() => downloadFavicon('ico', 16, 'favicon.ico')}
-              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded"
+              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded transition duration-300 ease-in-out transform hover:scale-105"
             >
               다운로드 (ICO, 16x16)
             </button>
             <button
               onClick={() => downloadFavicon('png', 32, 'favicon32.png')}
-              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded"
+              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded transition duration-300 ease-in-out transform hover:scale-105"
             >
               다운로드 (PNG, 32x32)
             </button>
             <button
               onClick={() => downloadFavicon('png', 64, 'favicon64.png')}
-              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded"
+              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded transition duration-300 ease-in-out transform hover:scale-105"
             >
               다운로드 (PNG, 64x64)
             </button>
             <button
               onClick={() => downloadFavicon('png', 128, 'favicon128.png')}
-              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded"
+              className="mb-2 px-4 py-2 bg-blue-500 text-white rounded transition duration-300 ease-in-out transform hover:scale-105"
             >
               다운로드 (PNG, 128x128)
             </button>
             <button
               onClick={downloadAll}
-              className="mt-4 px-4 py-2 bg-green-500 text-white rounded"
+              className="mt-4 px-4 py-2 bg-green-500 text-white rounded transition duration-300 ease-in-out transform hover:scale-105"
             >
               전체 다운로드 (ZIP)
+            </button>
+            <button
+              onClick={handleDelete}
+              className="mt-4 px-4 py-2 bg-red-500 text-white rounded transition duration-300 ease-in-out transform hover:scale-105"
+            >
+              삭제
             </button>
           </div>
         </>
