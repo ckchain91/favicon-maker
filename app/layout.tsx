@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <title>Favicon 변경기</title>
+        <title>Favicon 생성기</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>{children}</body>
