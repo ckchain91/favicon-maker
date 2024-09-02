@@ -98,7 +98,7 @@ const FaviconUploader: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-red-500 text-white">
-      <h1 className="text-4xl font-bold mb-4">Favicon 변경기</h1>
+      <h1 className="text-4xl font-bold mb-4">Favicon 생성기</h1>
       {!favicon && (
         <input
           type="file"
